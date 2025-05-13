@@ -79,6 +79,14 @@ class JavaRepoCell: UITableViewCell {
         return img
     }()
     
+    lazy var labelRepoOwner: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 12)
+        lbl.textColor = .black
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
     lazy var viewContainer: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear
@@ -93,6 +101,7 @@ class JavaRepoCell: UITableViewCell {
         setupLabelForkCount()
         setupLabelStarsCount()
         setupImgAvatar()
+        setupLabelRepoOwner()
     }
     
     func setupViewContainer() {
@@ -150,10 +159,18 @@ class JavaRepoCell: UITableViewCell {
     func setupImgAvatar() {
         self.viewContainer.addSubview(imgAvatar)
         NSLayoutConstraint.activate([
-            imgAvatar.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant: -10),
+            imgAvatar.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant: -20),
             imgAvatar.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 10),
             imgAvatar.heightAnchor.constraint(equalToConstant: 30),
             imgAvatar.widthAnchor.constraint(equalToConstant: 30),
+        ])
+    }
+    
+    func setupLabelRepoOwner() {
+        self.viewContainer.addSubview(labelRepoOwner)
+        NSLayoutConstraint.activate([
+            labelRepoOwner.centerXAnchor.constraint(equalTo: imgAvatar.centerXAnchor),
+            labelRepoOwner.topAnchor.constraint(equalTo: imgAvatar.bottomAnchor, constant: 10),
         ])
     }
     
@@ -166,6 +183,7 @@ extension JavaRepoCell: JavaRepoCellProtocol {
         labelRepoDesc.text = info.repositoryDescripton
         labelForkCount.text = "🍴\(info.forksCount)"
         labelStarsCount.text = "⭐️\(info.starsCount)"
+        labelRepoOwner.text = info.owner.login
     }
     
     

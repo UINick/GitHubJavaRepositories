@@ -118,7 +118,7 @@ extension JavaRepositoriesViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let repo = viewModel.repository(at: indexPath.row)
         let projectDetail = viewModel.getRepoInfo(repo)
-        let viewModel: PullRequestBusinessLogic = PullRequestViewModel(repoDetails: projectDetail)
+        let viewModel: PullRequestBusinessLogic = PullRequestViewModel(prInfo: projectDetail)
         let controller = PullRequestViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: true)
     }

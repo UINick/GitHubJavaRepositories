@@ -11,7 +11,7 @@ import UIKit
 
 protocol JavaRepositoriesBusinessLogic {
     func fetchRepositories()
-    func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestModel
+    func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestInfo
     func repository(at index: Int) -> JavaProjectsModel
     func fetchImage(for index: Int, imageURL: String)
     
@@ -69,8 +69,9 @@ extension JavaRepositoriesViewModel: JavaRepositoriesBusinessLogic {
         }
     }
     
-    func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestModel {
-        return PullRequestModel(prTitle: "A", prDate: "", prBody: "", user: PullRequestUserModel(prOwnerName: ""))
+    func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestInfo {
+        return (ownerLogin: project.owner.login,
+                repository: project.repositoryName)
     }
     
     func fetchImage(for index: Int, imageURL: String) {

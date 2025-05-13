@@ -8,14 +8,14 @@
 import Foundation
 
 protocol PullRequestRepositoryProtocol {
-    func getPullRequestList() async throws -> [JavaProjectsModel]
+    func fetchPullRequests(with info: PullRequestInfo) async throws -> [PullRequestModel]
 }
 
-class PullRequestRepository: GitHubRepoRepositoryProtocol {
-    func getPopularJavaRepositories(_ page: Int) async throws -> [JavaProjectsModel] {
-        let url = URL(string: "https://api.github.com/search/repositories?q=language:Java&sort=stars&%20page=\(page)")!
+class PullRequestRepository: PullRequestRepositoryProtocol {
+    func fetchPullRequests(with info: PullRequestInfo) async throws -> [PullRequestModel] {
+        let url = URL(string: "https://api.github.com/repos/\(info.ownerLogin)/\(info.repository)/pulls")!
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded = try JSONDecoder().decode(SearchResponse.self, from: data)
-        return decoded.items ?? []
+        let decoded = try JSONDecoder().decode([PullRequestModel].self, from: data)
+        return decoded
     }
 }

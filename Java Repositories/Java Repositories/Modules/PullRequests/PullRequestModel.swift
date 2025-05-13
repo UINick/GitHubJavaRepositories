@@ -8,9 +8,9 @@
 import Foundation
 
 struct PullRequestModel: Decodable {
-    let prTitle: String
-    let prDate: String
-    let prBody: String
+    let prTitle: String?
+    let prDate: String?
+    let prBody: String?
     let user: PullRequestUserModel
     
     enum CodingKeys: String, CodingKey {
@@ -28,5 +28,7 @@ struct PullRequestUserModel: Decodable {
         case prOwnerName = "login"
     }
 }
+
+public typealias PullRequestInfo = (ownerLogin: String, repository: String)
 
 //Nome do autor do PR, Título do PR, Data do PR e Body do PR

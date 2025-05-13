@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				A813AD652DD0DEC4009D3AB4 /* Repositories */,
-				A813AD662DD0DECF009D3AB4 /* RepositoriesDetails */,
+				A813AD662DD0DECF009D3AB4 /* PullRequests */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -180,14 +180,14 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		A813AD662DD0DECF009D3AB4 /* RepositoriesDetails */ = {
+		A813AD662DD0DECF009D3AB4 /* PullRequests */ = {
 			isa = PBXGroup;
 			children = (
 				A813AD692DD0DF30009D3AB4 /* PullRequestViewController.swift */,
 				A813AD6B2DD0DF5C009D3AB4 /* PullRequestViewModel.swift */,
 				A813AD6D2DD0DFA5009D3AB4 /* PullRequestModel.swift */,
 			);
-			path = RepositoriesDetails;
+			path = PullRequests;
 			sourceTree = "<group>";
 		};
 		A813AD672DD0DF00009D3AB4 /* Controller */ = {

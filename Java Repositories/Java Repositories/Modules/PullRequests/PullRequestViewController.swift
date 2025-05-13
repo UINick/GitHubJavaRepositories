@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class PullRequestViewController: UIViewController {
     
@@ -20,8 +21,9 @@ class PullRequestViewController: UIViewController {
         return table
     }()
     
-    private let kCellHeight: CGFloat = 80
+    private let cellHeight: CGFloat = 80
     private let viewModel: PullRequestBusinessLogic
+    private var cancellables = Set<AnyCancellable>()
     
     init(viewModel: PullRequestBusinessLogic) {
         self.viewModel = viewModel
@@ -35,7 +37,19 @@ class PullRequestViewController: UIViewController {
     override func viewDidLoad() {        
         view.backgroundColor = .white
         setUpTableView()
-//        viewModel.fetchRepositories()
+        bindViewModel()
+        viewModel.fetchPullRequests()
+    }
+    
+    
+    private func bindViewModel() {
+        viewModel.pullRequestsListPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] a in
+                a.count
+                self?.tableview.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     private func setUpTableView() {
@@ -53,12 +67,23 @@ class PullRequestViewController: UIViewController {
 
 extension PullRequestViewController : UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.pullRequestsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cellIdentifier = "cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+
+        let repo = viewModel.pr(at: indexPath.row)
+        cell.textLabel?.text = repo.prTitle ?? ""
+        cell.detailTextLabel?.text = repo.prBody ?? ""
+
+        return cell
     }
     
 }
