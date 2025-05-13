@@ -18,9 +18,12 @@
 		A813AD5D2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD5C2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift */; };
 		A813AD602DCD77E2009D3AB4 /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD5F2DCD77E2009D3AB4 /* GithubRepository.swift */; };
 		A813AD632DCD785E009D3AB4 /* JavaProjectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD622DCD785E009D3AB4 /* JavaProjectsModel.swift */; };
-		A813AD6A2DD0DF30009D3AB4 /* JavaRepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD692DD0DF30009D3AB4 /* JavaRepoDetailsViewController.swift */; };
-		A813AD6C2DD0DF5C009D3AB4 /* JavaRepoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD6B2DD0DF5C009D3AB4 /* JavaRepoDetailViewModel.swift */; };
-		A813AD6E2DD0DFA5009D3AB4 /* JavaRepoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD6D2DD0DFA5009D3AB4 /* JavaRepoDetailModel.swift */; };
+		A813AD6A2DD0DF30009D3AB4 /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD692DD0DF30009D3AB4 /* PullRequestViewController.swift */; };
+		A813AD6C2DD0DF5C009D3AB4 /* PullRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD6B2DD0DF5C009D3AB4 /* PullRequestViewModel.swift */; };
+		A813AD6E2DD0DFA5009D3AB4 /* PullRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD6D2DD0DFA5009D3AB4 /* PullRequestModel.swift */; };
+		A8C0990E2DD142EE002966A9 /* JavaRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */; };
+		A8C099102DD14DCD002966A9 /* PullRequestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0990F2DD14DCD002966A9 /* PullRequestRepository.swift */; };
+		A8C099122DD27A10002966A9 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C099112DD27A10002966A9 /* ImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +59,12 @@
 		A813AD5C2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaRepositoriesViewModel.swift; sourceTree = "<group>"; };
 		A813AD5F2DCD77E2009D3AB4 /* GithubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
 		A813AD622DCD785E009D3AB4 /* JavaProjectsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaProjectsModel.swift; sourceTree = "<group>"; };
-		A813AD692DD0DF30009D3AB4 /* JavaRepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaRepoDetailsViewController.swift; sourceTree = "<group>"; };
-		A813AD6B2DD0DF5C009D3AB4 /* JavaRepoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaRepoDetailViewModel.swift; sourceTree = "<group>"; };
-		A813AD6D2DD0DFA5009D3AB4 /* JavaRepoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaRepoDetailModel.swift; sourceTree = "<group>"; };
+		A813AD692DD0DF30009D3AB4 /* PullRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewController.swift; sourceTree = "<group>"; };
+		A813AD6B2DD0DF5C009D3AB4 /* PullRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewModel.swift; sourceTree = "<group>"; };
+		A813AD6D2DD0DFA5009D3AB4 /* PullRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestModel.swift; sourceTree = "<group>"; };
+		A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaRepoCell.swift; sourceTree = "<group>"; };
+		A8C0990F2DD14DCD002966A9 /* PullRequestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestRepository.swift; sourceTree = "<group>"; };
+		A8C099112DD27A10002966A9 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				A813AD5F2DCD77E2009D3AB4 /* GithubRepository.swift */,
+				A8C0990F2DD14DCD002966A9 /* PullRequestRepository.swift */,
+				A8C099112DD27A10002966A9 /* ImageRepository.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -175,9 +183,9 @@
 		A813AD662DD0DECF009D3AB4 /* RepositoriesDetails */ = {
 			isa = PBXGroup;
 			children = (
-				A813AD692DD0DF30009D3AB4 /* JavaRepoDetailsViewController.swift */,
-				A813AD6B2DD0DF5C009D3AB4 /* JavaRepoDetailViewModel.swift */,
-				A813AD6D2DD0DFA5009D3AB4 /* JavaRepoDetailModel.swift */,
+				A813AD692DD0DF30009D3AB4 /* PullRequestViewController.swift */,
+				A813AD6B2DD0DF5C009D3AB4 /* PullRequestViewModel.swift */,
+				A813AD6D2DD0DFA5009D3AB4 /* PullRequestModel.swift */,
 			);
 			path = RepositoriesDetails;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 		A813AD672DD0DF00009D3AB4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A8C0990C2DD142C0002966A9 /* Cell */,
 				A813AD302DCD5785009D3AB4 /* JavaRepositoriesViewController.swift */,
 			);
 			path = Controller;
@@ -196,6 +205,14 @@
 				A813AD5C2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A8C0990C2DD142C0002966A9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,15 +345,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C099102DD14DCD002966A9 /* PullRequestRepository.swift in Sources */,
 				A813AD5D2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift in Sources */,
 				A813AD312DCD5785009D3AB4 /* JavaRepositoriesViewController.swift in Sources */,
 				A813AD602DCD77E2009D3AB4 /* GithubRepository.swift in Sources */,
 				A813AD2D2DCD5785009D3AB4 /* AppDelegate.swift in Sources */,
 				A813AD2F2DCD5785009D3AB4 /* SceneDelegate.swift in Sources */,
-				A813AD6A2DD0DF30009D3AB4 /* JavaRepoDetailsViewController.swift in Sources */,
+				A813AD6A2DD0DF30009D3AB4 /* PullRequestViewController.swift in Sources */,
+				A8C099122DD27A10002966A9 /* ImageRepository.swift in Sources */,
 				A813AD632DCD785E009D3AB4 /* JavaProjectsModel.swift in Sources */,
-				A813AD6E2DD0DFA5009D3AB4 /* JavaRepoDetailModel.swift in Sources */,
-				A813AD6C2DD0DF5C009D3AB4 /* JavaRepoDetailViewModel.swift in Sources */,
+				A813AD6E2DD0DFA5009D3AB4 /* PullRequestModel.swift in Sources */,
+				A813AD6C2DD0DF5C009D3AB4 /* PullRequestViewModel.swift in Sources */,
+				A8C0990E2DD142EE002966A9 /* JavaRepoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

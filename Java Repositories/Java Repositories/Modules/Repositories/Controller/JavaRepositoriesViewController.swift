@@ -10,20 +10,24 @@ import Combine
 
 class JavaRepositoriesViewController: UIViewController {
     
+    // MARK: - UI Components
     lazy var tableview: UITableView = {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(JavaRepoCell.self, forCellReuseIdentifier: JavaRepoCell.identifier)
         table.separatorStyle = .none
         return table
     }()
     
-    private let kCellHeight: CGFloat = 80
+    // MARK: - Properties
+    private let cellHeight: CGFloat = 110
     private var viewModel: JavaRepositoriesBusinessLogic
     private var cancellables = Set<AnyCancellable>()
     
     
+    // MARK: - Initializers
     init(viewModel: JavaRepositoriesBusinessLogic = JavaRepositoriesViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -33,24 +37,38 @@ class JavaRepositoriesViewController: UIViewController {
         self.viewModel = JavaRepositoriesViewModel()
         super.init(coder: coder)
     }
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Github JavaPop"
-        
-        setUpTableView()
+        configureUI()
         bindViewModel()
         viewModel.fetchRepositories()
     }
     
+    private func configureUI() {
+        view.backgroundColor = .white
+        title = "Github JavaPop"
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        view.addSubview(tableview)
+        NSLayoutConstraint.activate([
+            tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            tableview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+        ])
+    }
+    
     private func bindViewModel() {
-        
         viewModel.isLoadingPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] isLoading in
+            .sink { [weak self] _ in
                 self?.tableview.reloadData()
-            }.store(in: &cancellables)
+            }
+            .store(in: &cancellables)
         
         viewModel.repositoriesPublisher
             .receive(on: DispatchQueue.main)
@@ -58,27 +76,31 @@ class JavaRepositoriesViewController: UIViewController {
                 self?.tableview.reloadData()
             }
             .store(in: &cancellables)
-
+        
+        viewModel.imagePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] avatarInfo in
+                self?.updateAvatarImage(at: avatarInfo.index,
+                                        image: avatarInfo.image)
+            }
+            .store(in: &cancellables)
     }
     
-    private func setUpTableView() {
-        view.addSubview(tableview)
-        NSLayoutConstraint.activate([
-            tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                              constant: 8.0),
-            tableview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                              constant: -8.0)
-        ])
+    private func updateAvatarImage(at index: Int, image: UIImage?) {
+        let indexPath = IndexPath(row: index, section: 0)
+        if let cell = tableview.cellForRow(at: indexPath) as? JavaRepoCell {
+            cell.imgAvatar.image = image
+        }
     }
     
 }
 
+// MARK: - UITableViewDelegate & UITableViewDataSource
+
 extension JavaRepositoriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
+        return cellHeight
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,21 +108,18 @@ extension JavaRepositoriesViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: JavaRepoCell.identifier) as? JavaRepoCellProtocol
         let repo = viewModel.repository(at: indexPath.row)
-        cell.textLabel?.text = repo.repositoryName
-        cell.detailTextLabel?.text = "⭐️ \(repo.starsCount) | 🍴 \(repo.forksCount)"
-
-        return cell
+        cell?.addInfo(repo)
+        viewModel.fetchImage(for: indexPath.row, imageURL: repo.owner.avatarUrl)
+        return cell as? UITableViewCell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let repo = viewModel.repository(at: indexPath.row)
         let projectDetail = viewModel.getRepoInfo(repo)
-        let viewModel: JavaRepoDetailBussinessLogic = JavaRepoDetailViewModel(repoDetails: projectDetail)
-        let controller = JavaRepoDetailsViewController(viewModel: viewModel)
+        let viewModel: PullRequestBusinessLogic = PullRequestViewModel(repoDetails: projectDetail)
+        let controller = PullRequestViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

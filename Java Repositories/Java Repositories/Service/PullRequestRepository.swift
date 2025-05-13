@@ -1,21 +1,18 @@
 //
-//  GithubRepository.swift
+//  PullRequestRepository.swift
 //  Java Repositories
 //
-//  Created by Nicholas Forte on 08/05/25.
+//  Created by Nicholas Forte on 11/05/25.
 //
 
 import Foundation
 
-protocol GitHubRepoRepositoryProtocol {
-    func getPopularJavaRepositories(_ page: Int) async throws -> [JavaProjectsModel]
+protocol PullRequestRepositoryProtocol {
+    func getPullRequestList() async throws -> [JavaProjectsModel]
 }
 
-class GitHubRepoRepository: GitHubRepoRepositoryProtocol {
+class PullRequestRepository: GitHubRepoRepositoryProtocol {
     func getPopularJavaRepositories(_ page: Int) async throws -> [JavaProjectsModel] {
-        print("CHAMEEEEEEEI")
-        print("+++++++++++++++++++++++")
-        print("+++++++++++++++++++++++ page \(page)")
         let url = URL(string: "https://api.github.com/search/repositories?q=language:Java&sort=stars&%20page=\(page)")!
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoded = try JSONDecoder().decode(SearchResponse.self, from: data)

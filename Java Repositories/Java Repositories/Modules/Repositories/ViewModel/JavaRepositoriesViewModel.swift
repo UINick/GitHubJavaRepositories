@@ -7,58 +7,41 @@
 
 import Foundation
 import Combine
+import UIKit
 
 protocol JavaRepositoriesBusinessLogic {
     func fetchRepositories()
-    func getRepoInfo(_ project : JavaProjectsModel) -> JavaRepoDetailModel
+    func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestModel
     func repository(at index: Int) -> JavaProjectsModel
+    func fetchImage(for index: Int, imageURL: String)
     
     var repositoryCount: Int { get }
     var repositoriesPublisher: Published<[JavaProjectsModel]>.Publisher { get }
     var isLoadingPublisher: Published<Bool>.Publisher { get }
+    var imagePublisher: Published<AvatarInfo>.Publisher { get }
 }
 
 
-class JavaRepositoriesViewModel: JavaRepositoriesBusinessLogic {
+class JavaRepositoriesViewModel {
         
     @Published private(set) var repositories: [JavaProjectsModel] = []
     @Published var isLoading: Bool = false
+    @Published var avatar: AvatarInfo = (index: 0, image: nil)
     
     private var repository: GitHubRepoRepositoryProtocol
     private var currentPage = 1
     
-    var repositoriesPublisher: Published<[JavaProjectsModel]>.Publisher { $repositories }
-    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
-    
     init(repository: GitHubRepoRepositoryProtocol = GitHubRepoRepository()) {
         self.repository = repository
     }
-
-    func fetchRepositories() {
-        guard !isLoading else { return }
-        isLoading = true
-
-        Task {
-            do {
-                let newRepos = try await repository.getPopularJavaRepositories(currentPage)
-                currentPage += 1
-                self.repositories.append(contentsOf: newRepos)
-                self.isLoading = false
-                
-            } catch {
-                self.isLoading = false
-            }
-        }
-    }
     
-    func getRepoInfo(_ project : JavaProjectsModel) -> JavaRepoDetailModel {
-        return JavaRepoDetailModel(repoName: project.repositoryName,
-                                   open: 2,
-                                   close: 3,
-                                   pullRequestTitle: project.repositoryDescripton,
-                                   pullRequestSubtitle: project.repositoryDescripton,
-                                   owner: OwnerProjectModel(avatarUrl: "http", login: "uhu"))
-    }
+}
+
+extension JavaRepositoriesViewModel: JavaRepositoriesBusinessLogic {
+    
+    var repositoriesPublisher: Published<[JavaProjectsModel]>.Publisher { $repositories }
+    var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
+    var imagePublisher: Published<AvatarInfo>.Publisher { $avatar }
     
     func repository(at index: Int) -> JavaProjectsModel {
         return repositories[index]
@@ -66,5 +49,39 @@ class JavaRepositoriesViewModel: JavaRepositoriesBusinessLogic {
     
     var repositoryCount: Int {
         return repositories.count
+    }
+    
+    func fetchRepositories() {
+        guard !isLoading else { return }
+        isLoading = true
+
+        Task {
+            defer { isLoading = false }
+            do {
+                let newRepos = try await repository.getPopularJavaRepositories(currentPage)
+                if !newRepos.isEmpty {
+                    currentPage += 1
+                    repositories.append(contentsOf: newRepos)
+                }
+            } catch {
+                print("Erro ao buscar: \(error)")
+            }
+        }
+    }
+    
+    func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestModel {
+        return PullRequestModel(prTitle: "A", prDate: "", prBody: "", user: PullRequestUserModel(prOwnerName: ""))
+    }
+    
+    func fetchImage(for index: Int, imageURL: String) {
+        let imageRepository = ImageRepository()
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            imageRepository.loadImage(from: imageURL) { image in
+                DispatchQueue.main.async {
+                    self?.avatar = (index, image)
+                }
+            }
+        }
     }
 }

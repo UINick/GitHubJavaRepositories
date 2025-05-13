@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct JavaProjectsModel: Decodable {
     let repositoryName: String
@@ -33,6 +34,22 @@ struct OwnerProjectModel: Decodable {
     }
 }
 
-struct SearchResponse: Decodable {
-    let items: [JavaProjectsModel]
+class SearchResponse: Decodable {
+    let items: [JavaProjectsModel]?
+ 
+    enum CodingKeys: String, CodingKey {
+        case items = "items"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            self.items = try values.decode([JavaProjectsModel]?.self, forKey: .items)
+        } catch {
+            items = nil
+        }
+    }
 }
+
+
+public typealias AvatarInfo = (index: Int, image: UIImage?)
