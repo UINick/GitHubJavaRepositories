@@ -11,6 +11,7 @@ import Combine
 
 class PullRequestViewController: UIViewController {
     
+    // MARK: - UI Components
     lazy var tableview: UITableView = {
         let table = UITableView()
         table.delegate = self
@@ -23,10 +24,12 @@ class PullRequestViewController: UIViewController {
         return table
     }()
     
+    // MARK: - Properties
     private let cellHeight: CGFloat = 120
     private let viewModel: PullRequestBusinessLogic
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Initializers
     init(viewModel: PullRequestBusinessLogic) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -35,6 +38,8 @@ class PullRequestViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         configureUI()
@@ -70,6 +75,8 @@ class PullRequestViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension PullRequestViewController : UITableViewDelegate, UITableViewDataSource {
     

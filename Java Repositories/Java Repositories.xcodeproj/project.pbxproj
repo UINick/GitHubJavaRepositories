@@ -138,14 +138,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		A813AD612DCD7837009D3AB4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A813AD622DCD785E009D3AB4 /* JavaProjectsModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		A813AD642DD0DEBE009D3AB4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,9 +150,10 @@
 		A813AD652DD0DEC4009D3AB4 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				A813AD682DD0DF11009D3AB4 /* ViewModel */,
-				A813AD672DD0DF00009D3AB4 /* Controller */,
-				A813AD612DCD7837009D3AB4 /* Model */,
+				A813AD5C2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift */,
+				A813AD622DCD785E009D3AB4 /* JavaProjectsModel.swift */,
+				A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */,
+				A813AD302DCD5785009D3AB4 /* JavaRepositoriesViewController.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -174,31 +167,6 @@
 				A8D193562DD3E97400CB5CF0 /* PullRequestCell.swift */,
 			);
 			path = PullRequests;
-			sourceTree = "<group>";
-		};
-		A813AD672DD0DF00009D3AB4 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				A8C0990C2DD142C0002966A9 /* Cell */,
-				A813AD302DCD5785009D3AB4 /* JavaRepositoriesViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		A813AD682DD0DF11009D3AB4 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A813AD5C2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A8C0990C2DD142C0002966A9 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		A8DA02542DD5851800EC6845 /* Mock */ = {
