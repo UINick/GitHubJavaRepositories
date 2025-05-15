@@ -1,16 +1,45 @@
-# GitHubJavaRepositories
+# Java Repositories
 
-O projeto contém duas viewControllers, onde uma mostra a lista dos repositorios mais populares de Java,
-e na outra os Pull requests do repositório em questão:
+Projeto iOS desenvolvido em **Swift** com **UIKit**, aplicando a arquitetura **MVVM**, utilizando **Combine**, **URLSession**, **Async/Await** e com foco em **Acessibilidade**.  
+Ele lista os repositórios Java mais populares do GitHub, com uma interface fluida, responsiva e inclusiva.
 
--> Java_Repositories > Modules > Repositories > JavaRepositoriesViewController
+---
 
--> Java_Repositories > Modules > PullRequests > PullRequestViewController
+##  Funcionalidades
+
+- Listagem dos repositórios mais populares escritos em Java
+- Requisições assíncronas com `URLSession` + `async/await`
+- Atualização reativa da UI com `Combine`
+- Arquitetura limpa baseada em `MVVM`
+- Suporte à acessibilidade com `VoiceOver`
+- Testes unitários com `XCTest`
+
+---
+
+## 🛠️ Tecnologias
+
+- Swift 5
+- UIKit
+- MVVM
+- Combine
+- URLSession + async/await
+- Accessibility APIs
+- XCTest
+
+---
+
+## Exemplo utilizado com Voice Over
+<img width="1129" alt="Captura de Tela 2025-05-14 às 23 08 26" src="https://github.com/user-attachments/assets/9fd86b62-4fd0-439b-8e4c-98656c23993c" />
 
 
-Estou utilizando o padrão de arquitetura MVVM.
+---
 
-Nas viewModels ("JavaRepositoriesViewModel", "PullRequestViewModel") estou utlizando o framework da apple "Combine" para atualizar
-as informações obtidas, para a camada da viewController.
+## 🚀 Como rodar o projeto
 
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
+2. Abra o projeto no xcode:
+  ```bash
+  GitHubJavaRepositories > Java Repositories > Java Repositories.xcodeproj
