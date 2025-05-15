@@ -29,10 +29,13 @@ class JavaRepositoriesViewModel {
     @Published var avatar: AvatarInfo = (index: 0, image: nil)
     
     private var repository: GitHubRepoRepositoryProtocol
+    private var imageRepository: ImageRepositoryProtocol
     private var currentPage = 1
     
-    init(repository: GitHubRepoRepositoryProtocol = GitHubRepoRepository()) {
+    init(repository: GitHubRepoRepositoryProtocol = GitHubRepoRepository(),
+         imgRepository: ImageRepositoryProtocol = ImageRepository()) {
         self.repository = repository
+        self.imageRepository = imgRepository
     }
     
 }
@@ -75,10 +78,9 @@ extension JavaRepositoriesViewModel: JavaRepositoriesBusinessLogic {
     }
     
     func fetchImage(for index: Int, imageURL: String) {
-        let imageRepository = ImageRepository()
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            imageRepository.loadImage(from: imageURL) { image in
+            self?.imageRepository.loadImage(from: imageURL) { image in
                 DispatchQueue.main.async {
                     self?.avatar = (index, image)
                 }

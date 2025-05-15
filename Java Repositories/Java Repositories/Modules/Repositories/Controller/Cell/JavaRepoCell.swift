@@ -33,7 +33,7 @@ class JavaRepoCell: UITableViewCell {
     
     lazy var labelRepoName: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 18)
+        lbl.font = UIFont.boldSystemFont(ofSize: 17)
         lbl.textColor = .black
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
@@ -41,10 +41,9 @@ class JavaRepoCell: UITableViewCell {
     
     lazy var labelRepoDesc: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 12)
-        lbl.textColor = .black
-        lbl.lineBreakMode = .byWordWrapping
-        lbl.numberOfLines = 0
+        lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.textColor = .secondaryLabel
+        lbl.numberOfLines = 2
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -121,12 +120,11 @@ class JavaRepoCell: UITableViewCell {
     func setupLabelRepoName() {
         self.viewContainer.addSubview(labelRepoName)
         NSLayoutConstraint.activate([
-            labelRepoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+            labelRepoName.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor,
                                                    constant: 10),
-            labelRepoName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+            labelRepoName.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor,
                                                     constant: -10),
-            labelRepoName.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor,
-                                               constant: 10),
+            labelRepoName.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 10),
         ])
     }
     
@@ -136,7 +134,7 @@ class JavaRepoCell: UITableViewCell {
             labelRepoDesc.leadingAnchor.constraint(equalTo: labelRepoName.leadingAnchor),
             labelRepoDesc.topAnchor.constraint(equalTo: labelRepoName.bottomAnchor, constant: 2),
             labelRepoDesc.widthAnchor.constraint(equalToConstant: 200),
-            labelRepoDesc.heightAnchor.constraint(equalToConstant: 30)
+            labelRepoDesc.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
@@ -181,8 +179,8 @@ extension JavaRepoCell: JavaRepoCellProtocol {
     func addInfo(_ info: JavaProjectsModel) {
         labelRepoName.text = info.repositoryName
         labelRepoDesc.text = info.repositoryDescripton
-        labelForkCount.text = "🍴\(info.forksCount)"
-        labelStarsCount.text = "⭐️\(info.starsCount)"
+        labelForkCount.text = "🍴 \(info.forksCount)"
+        labelStarsCount.text = "⭐️ \(info.starsCount)"
         labelRepoOwner.text = info.owner.login
     }
     

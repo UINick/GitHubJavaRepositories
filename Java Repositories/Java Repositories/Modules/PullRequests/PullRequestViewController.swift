@@ -16,12 +16,14 @@ class PullRequestViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.separatorStyle = .none
+        table.register(PullRequestCell.self, forCellReuseIdentifier: PullRequestCell.identifier)
+        table.separatorStyle = .singleLine
+        table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         
         return table
     }()
     
-    private let cellHeight: CGFloat = 80
+    private let cellHeight: CGFloat = 120
     private let viewModel: PullRequestBusinessLogic
     private var cancellables = Set<AnyCancellable>()
     
@@ -34,11 +36,16 @@ class PullRequestViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {        
-        view.backgroundColor = .white
-        setUpTableView()
+    override func viewDidLoad() {
+        configureUI()
         bindViewModel()
         viewModel.fetchPullRequests()
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = .white
+        title = viewModel.repoName
+        setUpTableView()
     }
     
     
@@ -46,7 +53,6 @@ class PullRequestViewController: UIViewController {
         viewModel.pullRequestsListPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] a in
-                a.count
                 self?.tableview.reloadData()
             }
             .store(in: &cancellables)
@@ -76,14 +82,10 @@ extension PullRequestViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-
-        let repo = viewModel.pr(at: indexPath.row)
-        cell.textLabel?.text = repo.prTitle ?? ""
-        cell.detailTextLabel?.text = repo.prBody ?? ""
-
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PullRequestCell.identifier) as? PullRequestCellProtocol
+        let pr = viewModel.pr(at: indexPath.row)
+        cell?.addInfo(pr)
+        return cell as? UITableViewCell ?? UITableViewCell()
     }
     
 }

@@ -30,5 +30,3 @@ struct PullRequestUserModel: Decodable {
 }
 
 public typealias PullRequestInfo = (ownerLogin: String, repository: String)
-
-//Nome do autor do PR, Título do PR, Data do PR e Body do PR

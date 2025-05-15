@@ -18,11 +18,13 @@ class JavaRepositoriesViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(JavaRepoCell.self, forCellReuseIdentifier: JavaRepoCell.identifier)
         table.separatorStyle = .none
+        table.separatorStyle = .singleLine
+        table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return table
     }()
     
     // MARK: - Properties
-    private let cellHeight: CGFloat = 110
+    private let cellHeight: CGFloat = 130
     private var viewModel: JavaRepositoriesBusinessLogic
     private var cancellables = Set<AnyCancellable>()
     

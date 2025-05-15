@@ -12,6 +12,7 @@ protocol PullRequestBusinessLogic {
     func pr(at index: Int) -> PullRequestModel
     var pullRequestsListPublisher: Published<[PullRequestModel]>.Publisher { get }
     var pullRequestsCount: Int { get }
+    var repoName: String { get }
 }
 
 class PullRequestViewModel {
@@ -30,6 +31,8 @@ class PullRequestViewModel {
 extension PullRequestViewModel: PullRequestBusinessLogic {
     
     var pullRequestsListPublisher: Published<[PullRequestModel]>.Publisher { $pullRequestsList }
+    
+    var repoName: String { prInfo.repository }
     
     var pullRequestsCount: Int { pullRequestsList.count }
     
