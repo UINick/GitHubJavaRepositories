@@ -12,6 +12,7 @@ Ele lista os repositórios Java mais populares do GitHub, com uma interface flui
 - Atualização reativa da UI com `Combine`
 - Arquitetura limpa baseada em `MVVM`
 - Suporte à acessibilidade com `VoiceOver`
+- Persistência local com `UserDefaults`
 - Testes unitários com `XCTest`
 
 ---
@@ -28,8 +29,25 @@ Ele lista os repositórios Java mais populares do GitHub, com uma interface flui
 
 ---
 
+## Exemplo de chamadas na API:
+```bash
+https://api.github.com/repos/<criador>/<repositório>/pulls
+```
+```bash
+https://api.github.com/search/repositories?q=language:Java&sort=stars&
+page=1
+```
+
+---
+
 ## Exemplo utilizado com Voice Over
 <img width="1129" alt="Captura de Tela 2025-05-14 às 23 08 26" src="https://github.com/user-attachments/assets/9fd86b62-4fd0-439b-8e4c-98656c23993c" />
+
+
+---
+
+## Exemplo do projeto
+![Demonstração do App](Assets/novoVideo.gif)
 
 
 ---
