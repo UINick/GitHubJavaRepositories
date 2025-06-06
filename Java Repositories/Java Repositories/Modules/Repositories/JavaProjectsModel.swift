@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-struct JavaProjectsModel: Decodable {
+struct JavaProjectsModel: Codable {
+    let id: Int
     let repositoryName: String
     let repositoryDescripton : String
     let forksCount: Int
@@ -16,6 +17,7 @@ struct JavaProjectsModel: Decodable {
     let owner: OwnerProjectModel
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case repositoryName = "name"
         case repositoryDescripton = "description"
         case forksCount = "forks_count"
@@ -24,7 +26,7 @@ struct JavaProjectsModel: Decodable {
     }
 }
 
-struct OwnerProjectModel: Decodable {
+struct OwnerProjectModel: Codable {
     let avatarUrl: String
     let login: String
     

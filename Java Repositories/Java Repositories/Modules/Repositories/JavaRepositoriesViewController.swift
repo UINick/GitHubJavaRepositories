@@ -27,30 +27,36 @@ class JavaRepositoriesViewController: UIViewController {
     private let cellHeight: CGFloat = 130
     private var viewModel: JavaRepositoriesBusinessLogic
     private var cancellables = Set<AnyCancellable>()
-    
+    private var commingFromFavTab: Bool
     
     // MARK: - Initializers
-    init(viewModel: JavaRepositoriesBusinessLogic = JavaRepositoriesViewModel()) {
+    init(viewModel: JavaRepositoriesBusinessLogic = JavaRepositoriesViewModel(), 
+         favoriteTab: Bool = false) {
         self.viewModel = viewModel
+        self.commingFromFavTab = favoriteTab
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         self.viewModel = JavaRepositoriesViewModel()
+        self.commingFromFavTab = false
         super.init(coder: coder)
     }
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        configureUI()
         bindViewModel()
-        viewModel.fetchRepositories()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureUI()
+        commingFromFavTab ? viewModel.fetchFavoritesRepositories() : viewModel.fetchRepositories()
     }
     
     private func configureUI() {
         view.backgroundColor = .white
-        title = "Github JavaPop"
+        title = commingFromFavTab ? "Favorites" : "Repositories"
         setupTableView()
     }
     
@@ -120,19 +126,21 @@ extension JavaRepositoriesViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let repo = viewModel.repository(at: indexPath.row)
         let projectDetail = viewModel.getRepoInfo(repo)
-        let viewModel: PullRequestBusinessLogic = PullRequestViewModel(prInfo: projectDetail)
+        let viewModel: PullRequestBusinessLogic = PullRequestViewModel(prInfo: projectDetail,
+                                                                       javaRepo: repo)
         let controller = PullRequestViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let frameHeight = scrollView.frame.size.height
-            
-        if offsetY > contentHeight - frameHeight * 1.5 {
-            viewModel.fetchRepositories()
+        if !commingFromFavTab {
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = scrollView.contentSize.height
+            let frameHeight = scrollView.frame.size.height
+                
+            if offsetY > contentHeight - frameHeight * 1.5 {
+                viewModel.fetchRepositories()
+            }
         }
     }
     

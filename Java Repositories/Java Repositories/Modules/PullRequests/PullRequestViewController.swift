@@ -49,8 +49,25 @@ class PullRequestViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
-        title = viewModel.repoName
+        title = "PR's  from \(viewModel.repoName)"
         setUpTableView()
+        updateFavoriteButton()
+    }
+    
+    private func updateFavoriteButton() {
+        let iconName = viewModel.isFavoriteRepo ? "star.fill" : "star"
+        let image = UIImage(systemName: iconName)
+        let button = UIBarButtonItem(image: image,
+                                     style: .plain,
+                                    target: self,
+                                    action: #selector(toggleFavorite))
+        button.tintColor =  viewModel.isFavoriteRepo ? .systemYellow : .black
+        navigationItem.rightBarButtonItem = button
+    }
+
+    @objc private func toggleFavorite() {
+        viewModel.checkStatus()
+        updateFavoriteButton()
     }
     
     

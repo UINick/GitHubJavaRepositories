@@ -7,17 +7,145 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "43A185D6-C2E0-4FE2-90E6-7873B0D89347"
+            uuid = "2EEFAAED-5046-4E12-8AA8-C84512A0A7AB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Java Repositories/Modules/PullRequests/PullRequestViewController.swift"
+            filePath = "Java Repositories/Modules/PullRequests/PullRequestViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "bindViewModel()"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "checkStatus()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2EEFAAED-5046-4E12-8AA8-C84512A0A7AB - 47966876d7cbf82a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Java_Repositories.PullRequestViewModel.checkStatus() -&gt; ()"
+                  moduleName = "Java Repositories"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicholasforte/Desktop/repoJava/GitHubJavaRepositories/Java%20Repositories/Java%20Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "2EEFAAED-5046-4E12-8AA8-C84512A0A7AB - 47966876d7cbf82a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Java_Repositories.PullRequestViewModel.checkStatus() -&gt; ()"
+                  moduleName = "Java Repositories"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicholasforte/Desktop/repoJava/GitHubJavaRepositories/Java%20Repositories/Java%20Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CC3BE6A-DCE8-459E-887F-E8717C36BA00"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Java Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "checkStatus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3CC3BE6A-DCE8-459E-887F-E8717C36BA00 - 47966876d7cbfbe8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Java_Repositories.PullRequestViewModel.checkStatus() -&gt; ()"
+                  moduleName = "Java Repositories"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicholasforte/Desktop/repoJava/GitHubJavaRepositories/Java%20Repositories/Java%20Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  uuid = "3CC3BE6A-DCE8-459E-887F-E8717C36BA00 - 47966876d7cbfbe8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Java_Repositories.PullRequestViewModel.checkStatus() -&gt; ()"
+                  moduleName = "Java Repositories"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicholasforte/Desktop/repoJava/GitHubJavaRepositories/Java%20Repositories/Java%20Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "460">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7733E1F-7442-44A7-BF0B-E11650322A69"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Java Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "checkStatus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7733E1F-7442-44A7-BF0B-E11650322A69 - 47966876d7cbfbae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Java_Repositories.PullRequestViewModel.checkStatus() -&gt; ()"
+                  moduleName = "Java Repositories"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicholasforte/Desktop/repoJava/GitHubJavaRepositories/Java%20Repositories/Java%20Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "C7733E1F-7442-44A7-BF0B-E11650322A69 - 47966876d7cbfbae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Java_Repositories.PullRequestViewModel.checkStatus() -&gt; ()"
+                  moduleName = "Java Repositories"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicholasforte/Desktop/repoJava/GitHubJavaRepositories/Java%20Repositories/Java%20Repositories/Modules/PullRequests/PullRequestViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "472">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

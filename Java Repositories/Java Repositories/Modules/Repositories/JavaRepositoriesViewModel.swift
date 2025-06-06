@@ -11,6 +11,7 @@ import UIKit
 
 protocol JavaRepositoriesBusinessLogic {
     func fetchRepositories()
+    func fetchFavoritesRepositories()
     func getRepoInfo(_ project : JavaProjectsModel) -> PullRequestInfo
     func repository(at index: Int) -> JavaProjectsModel
     func fetchImage(for index: Int, imageURL: String)
@@ -30,12 +31,15 @@ class JavaRepositoriesViewModel {
     
     private var repository: GitHubRepoRepositoryProtocol
     private var imageRepository: ImageRepositoryProtocol
+    private let storage: ItemStorageProtocol
     private var currentPage = 1
     
     init(repository: GitHubRepoRepositoryProtocol = GitHubRepoRepository(),
-         imgRepository: ImageRepositoryProtocol = ImageRepository()) {
+         imgRepository: ImageRepositoryProtocol = ImageRepository(),
+         storage: ItemStorageProtocol = UserDefaultsStorage()) {
         self.repository = repository
         self.imageRepository = imgRepository
+        self.storage = storage
     }
     
 }
@@ -52,6 +56,10 @@ extension JavaRepositoriesViewModel: JavaRepositoriesBusinessLogic {
     
     var repositoryCount: Int {
         return repositories.count
+    }
+    
+    func fetchFavoritesRepositories() {
+        repositories = storage.fetchItems()
     }
     
     func fetchRepositories() {

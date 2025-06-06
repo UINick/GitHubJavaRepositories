@@ -18,6 +18,8 @@
 		A813AD6A2DD0DF30009D3AB4 /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD692DD0DF30009D3AB4 /* PullRequestViewController.swift */; };
 		A813AD6C2DD0DF5C009D3AB4 /* PullRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD6B2DD0DF5C009D3AB4 /* PullRequestViewModel.swift */; };
 		A813AD6E2DD0DFA5009D3AB4 /* PullRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A813AD6D2DD0DFA5009D3AB4 /* PullRequestModel.swift */; };
+		A87349312DF3561A0024FB88 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87349302DF3561A0024FB88 /* TabBarViewController.swift */; };
+		A873493B2DF367610024FB88 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A873493A2DF367610024FB88 /* UserDefaultsStorage.swift */; };
 		A8C0990E2DD142EE002966A9 /* JavaRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */; };
 		A8C099102DD14DCD002966A9 /* PullRequestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0990F2DD14DCD002966A9 /* PullRequestRepository.swift */; };
 		A8C099122DD27A10002966A9 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C099112DD27A10002966A9 /* ImageRepository.swift */; };
@@ -55,6 +57,8 @@
 		A813AD692DD0DF30009D3AB4 /* PullRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewController.swift; sourceTree = "<group>"; };
 		A813AD6B2DD0DF5C009D3AB4 /* PullRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewModel.swift; sourceTree = "<group>"; };
 		A813AD6D2DD0DFA5009D3AB4 /* PullRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestModel.swift; sourceTree = "<group>"; };
+		A87349302DF3561A0024FB88 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A873493A2DF367610024FB88 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		A8C0990D2DD142EE002966A9 /* JavaRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaRepoCell.swift; sourceTree = "<group>"; };
 		A8C0990F2DD14DCD002966A9 /* PullRequestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestRepository.swift; sourceTree = "<group>"; };
 		A8C099112DD27A10002966A9 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
@@ -106,8 +110,10 @@
 		A813AD2B2DCD5785009D3AB4 /* Java Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				A87349392DF367450024FB88 /* UserDefaultUtil */,
 				A813AD642DD0DEBE009D3AB4 /* Modules */,
 				A813AD5E2DCD7727009D3AB4 /* Service */,
+				A873492F2DF355FE0024FB88 /* Tabbar */,
 				A813AD2C2DCD5785009D3AB4 /* AppDelegate.swift */,
 				A813AD2E2DCD5785009D3AB4 /* SceneDelegate.swift */,
 				A813AD352DCD5787009D3AB4 /* Assets.xcassets */,
@@ -167,6 +173,22 @@
 				A8D193562DD3E97400CB5CF0 /* PullRequestCell.swift */,
 			);
 			path = PullRequests;
+			sourceTree = "<group>";
+		};
+		A873492F2DF355FE0024FB88 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				A87349302DF3561A0024FB88 /* TabBarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		A87349392DF367450024FB88 /* UserDefaultUtil */ = {
+			isa = PBXGroup;
+			children = (
+				A873493A2DF367610024FB88 /* UserDefaultsStorage.swift */,
+			);
+			path = UserDefaultUtil;
 			sourceTree = "<group>";
 		};
 		A8DA02542DD5851800EC6845 /* Mock */ = {
@@ -291,6 +313,7 @@
 				A813AD5D2DCD5A29009D3AB4 /* JavaRepositoriesViewModel.swift in Sources */,
 				A813AD312DCD5785009D3AB4 /* JavaRepositoriesViewController.swift in Sources */,
 				A813AD602DCD77E2009D3AB4 /* GithubRepository.swift in Sources */,
+				A87349312DF3561A0024FB88 /* TabBarViewController.swift in Sources */,
 				A813AD2D2DCD5785009D3AB4 /* AppDelegate.swift in Sources */,
 				A813AD2F2DCD5785009D3AB4 /* SceneDelegate.swift in Sources */,
 				A813AD6A2DD0DF30009D3AB4 /* PullRequestViewController.swift in Sources */,
@@ -300,6 +323,7 @@
 				A813AD6E2DD0DFA5009D3AB4 /* PullRequestModel.swift in Sources */,
 				A813AD6C2DD0DF5C009D3AB4 /* PullRequestViewModel.swift in Sources */,
 				A8C0990E2DD142EE002966A9 /* JavaRepoCell.swift in Sources */,
+				A873493B2DF367610024FB88 /* UserDefaultsStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

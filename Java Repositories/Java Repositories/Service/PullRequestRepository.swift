@@ -13,7 +13,7 @@ protocol PullRequestRepositoryProtocol {
 
 class PullRequestRepository: PullRequestRepositoryProtocol {
     func fetchPullRequests(with info: PullRequestInfo) async throws -> [PullRequestModel] {
-        let url = URL(string: "https://api.github.com/repos/\(info.ownerLogin)/\(info.repository)/pulls")!
+        guard let url = URL(string: "https://api.github.com/repos/\(info.ownerLogin)/\(info.repository)/pulls") else { return [] }
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoded = try JSONDecoder().decode([PullRequestModel].self, from: data)
         return decoded

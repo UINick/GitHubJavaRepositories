@@ -32,18 +32,3 @@ class ImageRepository: ImageRepositoryProtocol {
         task.resume()
     }
 }
-
-
-//
-//protocol ImageRepositoryProtocol {
-//    func fetchAvatar(urlString: String) async throws -> UIImage?
-//}
-//
-//class ImageRepository: ImageRepositoryProtocol {
-//    func fetchAvatar(urlString: String) async ->  UIImage? {
-//        let url = URL(string: urlString)
-//        let (data, _) = try await URLSession.shared.data(from: url!)
-//        let image = UIImage(data: data)
-//        return image
-//    }
-//}
