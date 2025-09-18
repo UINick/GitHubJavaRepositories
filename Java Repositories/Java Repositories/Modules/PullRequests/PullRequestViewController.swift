@@ -43,7 +43,7 @@ class PullRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         configureUI()
-//        bindViewModel()
+        bindViewModel()
         viewModel.fetchPullRequests()
     }
     
